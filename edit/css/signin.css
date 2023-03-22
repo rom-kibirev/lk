@@ -1,0 +1,204 @@
+BODY, HTML {
+	margin: 0px;
+	width:100%;
+	font-family: Arial, sans-serif;
+	font-size:16px;
+}
+INPUT {
+	-webkit-box-shadow: inset 1px 1px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: inset 1px 1px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: inset 1px 1px 3px 0px rgba(0,0,0,0.2);
+	color:#666;	
+}
+
+#enttab {
+	width:520px;
+	-webkit-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	padding:10px;
+	margin-top:200px;
+	margin-left:auto;
+	margin-right:auto;
+}
+@media (max-width: 768px) {
+#enttab {
+	width:100%;
+	margin-top:50px;
+	margin-left:auto;
+	margin-right:auto;
+}
+}
+@media (max-width: 700px) {
+#enttab {
+	width:100%;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	padding:10px;
+}
+}
+#disclamer {
+	padding:10px;
+	text-align:center;
+}
+#phonent {
+	font-size:48px;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;	
+}
+#phonent input {
+	width: 390px;
+	font-size:48px;
+	text-align:center;
+}
+@media (max-width: 510px) {
+#phonent {
+	font-size:24px;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;	
+}
+#phonent input {
+	width:80%;
+	font-size:24px;
+	text-align:center;
+}
+
+}
+#pinent {
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;	
+}
+#pinent input {
+	width: 150px;
+	font-size:48px;
+	text-align:center;
+}
+#userpass_f {
+	padding-left:30px;
+	padding-right: 30px;
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+#userpass_f input {
+	width:200px;
+	float:right;
+	text-align:left;
+}
+.userpass_f {
+	padding-left:65px;
+}
+#userpass_s {
+	padding-left:30px;
+	padding-right: 30px;
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+#userpass_s input {
+	width:200px;
+	float:right;
+	text-align:left;
+}
+#errpasw {
+	position:absolute;
+	z-index: 2;
+	margin-left:280px;
+	margin-top:-55px;
+	background-color: rgba(255,0,0,0.73);
+	border: solid 1px #F00;
+	padding:5px;
+	width: 150px;
+	color: #fff;
+	text-align:center;
+	-webkit-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+}
+.userpass_s {
+	padding-left:65px;
+}
+#passbut, #pinbut, #recpasw {
+	padding-top:10px;
+}
+#passbut input, #pinbut input, #recpasw input {
+	font-size:24px;
+	color:#FFF;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:30px;
+	padding-right:30px;
+	background: #21457c;
+    background: -webkit-linear-gradient(#21457c, #122542);
+    background: -o-linear-gradient(#21457c, #12254);
+    background: -moz-linear-gradient(#21457c, #12254);
+    background: linear-gradient(#21457c, #12254);
+	border:none;
+	cursor:pointer;
+	-webkit-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+}
+@media (max-width: 520px) {
+#passbut input, #pinbut input, #recpasw input {
+	font-size:16px;
+	color:#FFF;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:30px;
+	padding-right:30px;
+	background: #21457c;
+    background: -webkit-linear-gradient(#21457c, #122542);
+    background: -o-linear-gradient(#21457c, #12254);
+    background: -moz-linear-gradient(#21457c, #12254);
+    background: linear-gradient(#21457c, #12254);
+	border:none;
+	cursor:pointer;
+	-webkit-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.5);
+}
+#userpass_f {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+#userpass_f input {
+	width:100%;
+	float:left;
+	text-align:left;
+}
+.userpass_f {
+	padding-left:0px;
+}
+#userpass_s {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+#userpass_s input {
+	width:100%;
+	float:left;
+	text-align:left;
+}
+.userpass_s {
+	padding-left:0px;
+}
+}
+.falsedata {
+	background-color: rgba(255,0,0,0.3);
+	border: solid 2px #F00;
+}
+.nompop {
+	color:#F00;
+	font-size:24px;
+}

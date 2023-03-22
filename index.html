@@ -1,0 +1,750 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LK_new</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/jq_mob.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<!--<script type="text/javascript" src="js/grid.js"></script>-->
+<script type="text/javascript" src="js/grid_v1.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</head>
+
+<body>
+<div id="test">123</div>
+
+
+<div id="head">
+  <div id="mainlogo"><a href="/"><img src="images/mainlogo.png" /></a></div>
+  <div id="mainlogo_s"><a href="/"><img src="images/mainlogo_s.png" /></a></div>
+  <div id="head_nav">
+    <div id="site_title">Личный кабинет ООО «Главстрой-СПб»</div>
+    <div id="site_navigation">
+      <div id="hn_numb">У Вас <span id="hn_n_dog"></span> договоров</div>
+      <div id="hn_prev"></div>
+      <div class="hn_name_dog"></div>
+      <div class="hnn_list">
+        <div class="hnnl_close"></div>
+        <div id="hnn_list"></div>
+      </div>
+      <div id="hn_next"></div>
+    </div>
+  </div>
+  <div id="head_tools">
+    <div id="main_fav" class="allfav_dis"></div>
+    <a href="#exit">
+    <div id="main_exit"></div>
+    </a> </div>
+</div>
+
+
+<div id="inovpay_form" class="modal fade" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Счет на оплату</h4>
+        <div class="md_tools">
+          <div id="md_print"></div>
+          <div id="md_save"></div>
+          <div class="close" data-dismiss="modal" aria-label="Close"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="gi_con_title">Получатель</div>
+        <div class="gi_con_get" id="bill_corp">ООО «Главстрой-СПб»</div>
+        <div class="gi_con_title">Банк получателя</div>
+        <div class="gi_con_get" id="bill_bank">Северо-Западный банк «ПАО Сбербанк»</div>
+        <div id="mb_block">
+          <div class="gi_con_title">ИНН</div>
+          <div class="gi_con_get" id="bill_inn">7839347260</div>
+          <div class="gi_con_title">КПП</div>
+          <div class="gi_con_get" id="bill_kpp">783450001</div>
+          <div class="gi_con_title">ОГРН</div>
+          <div class="gi_con_get" id="bill_ogrn">1069847534360</div>
+        </div>
+        <div id="mb_block">
+          <div class="gi_con_title">БИК</div>
+          <div class="gi_con_get" id="bill_bik">044030653</div>
+          <div class="gi_con_title">Кор. счет</div>
+          <div class="gi_con_get" id="bill_korsh">30101810500000000653</div>
+          <div class="gi_con_title">Расчетный счет</div>
+          <div class="gi_con_get" id="bill_rassh" >40702810655200001599</div>
+        </div>
+        <div class="gi_con_title">Назначение платежа</div>
+        <div class="gi_con_get"><span id="pay_dog"></span> - <span id="pay_area"></span></div>
+        <div class="gi_con_title">Сумма платежа</div>
+        <div class="gi_con_get doc_money" id="pay_summ"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="show_pay_el" class="modal fade" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <div class="md_tools">
+          <div id="md_print"></div>
+          <div id="md_save"></div>
+          <div class="close" data-dismiss="modal" aria-label="Close"></div>
+        </div>
+      </div>
+      <div class="modal-body" id="spe_body"></div>
+    </div>
+  </div>
+</div>
+
+
+<div id="body_site" class="carousel slide" data-ride="carousel" data-interval="false">
+  <div class="carousel-inner" role="listbox">
+  
+  
+    <div class="item active">
+      <div id="subject_dog">"Северная Долина" 11-я очередь 9-й корпус квартира №1347</div>
+      <div id="doc_id">Договор №1347/9-20-83Д/ИА</div>
+      <div id="dog_block" class="grid">
+        
+        
+        <div class="grid-item" data-dog="1-1">
+          <div class="gi_head">
+            <div class="bl_title">Информация по корпусу</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_con_title">Готовность корпуса</div>
+            <div align="center" id="gi_ready"> <a href="http://sevdol.ru/gallery/building-progress/10-ochered/korpus-17/" target="_blank" class="korp_progress">
+              <div id="korp_progress">Ваш корпус готов на <span id="red_get">65,2%</span><br>
+                Перейти на ход строительства</div>
+              </a>
+              <div id="readiness">65,9%</div>
+            </div>
+            <div class="gi_con_title">Срок ввода в эксплуатацию</div>
+            <div class="gi_con_get" id="plandate">III квартал 2017</div>
+            <div class="gi_con_title" id="payform_dog">Форма оплаты</div>
+            <div class="gi_con_get">Ипотека (скидка 3%)</div>
+            <div class="gi_con_title">Банк</div>
+            <div class="gi_con_get" id="ipot_bank">ВТБ24 ПАО</div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="1-2">
+          <div class="gi_head">
+            <div class="bl_title">График платежей</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_doc_imp">
+              <div class="gi_con_title">Сумма договора</div>
+              <div class="doc_money">3 408 725.50 р.</div>
+              <div class="gi_con_title">Осталось оплатить по договору</div>
+              <div class="doc_money">1 408 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 1 от 01.06.2016г.</div>
+              <div class="doc_money">1 408 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 2 от 01.06.2016г.</div>
+              <div class="doc_money">3 408 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 45 от 01.06.2016г.</div>
+              <div class="doc_money">2 408 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="1-3">
+          <div class="gi_head">
+            <div class="bl_title">Состояние документов</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_con_title">Дата подачи документов в Главстрой-СПб для регистрации договора</div>
+            <div class="gi_con_get" id="doc_date_in_frs">07.05.2013</div>
+            <div class="gi_con_title">Дата подачи документов на регистрацию договора в Росреестр</div>
+            <div class="gi_con_get" id="doc_date_out_frs">07.05.2013</div>
+            <div class="gi_con_title">Дата получения документов с регистрации</div>
+            <div class="gi_con_get" id="doc_date_reg_comp">07.05.2013</div>
+            <div class="gi_con_title">Дата регистрации</div>
+            <div class="gi_con_get" id="doc_date_reg">07.05.2013</div>
+            <div class="gi_doc_imp" id="sf_body">
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="1-4">
+          <div class="gi_head">
+            <div class="bl_title">Информация по передаче квартиры</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_doc_imp">
+              <div class="gi_con_title">Адрес:</div>
+              <div class="gi_con_get_pib" id="miladr">Санкт-Петербург, Юнтоловский проспект, д.47, корпус 4</div>
+              <div class="gi_con_title">Номер квартиры по ПИБ:</div>
+              <div class="gi_con_get_pib doc_money" id="num_app_pib">163</div>
+              <div class="gi_con_title" id="gi_pd_plus">Общая площадь квартиры увеличена на:</div>
+              <div class="gi_con_title" id="gi_pd_minus">Общая площадь квартиры уменьшена на:</div>
+              <div class="gi_con_get_pib doc_money"><span id="pib_diff">0.22</span> м<sup>2</sup></div>
+              <div class="gi_con_title" id="gi_sd_plus">Сумма доплаты:</div>
+              <div class="gi_con_title" id="gi_sd_minus">Сумма возврата:</div>
+              <div class="gi_con_get_pib doc_money" id="summ_diff">8 000.00 р.</div>
+            </div>
+            <div class="gi_c_title">Проектные размеры квартиры</div>
+            <div class="gi_con_title">Общая площадь</div>
+            <div class="gi_con_get"><span id="area_app">22.1</span> м<sup>2</sup></div>
+            <div class="gi_con_title">Балкон/Лоджия</div>
+            <div class="gi_con_get"><span id="area_terr">2.1</span> м<sup>2</sup></div>
+            <div class="gi_c_title">Результат обмера ПИБ квартиры</div>
+            <div class="gi_con_title">Общая площадь</div>
+            <div class="gi_con_get"><span id="area_app_pib">22.1</span> м<sup>2</sup></div>
+            <div class="gi_con_title">Балкон/Лоджия</div>
+            <div class="gi_con_get"><span id="area_terr_pib">2.1</span> м<sup>2</sup></div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+    <div class="item">
+      <div id="subject_dog">"Юнтолово" 2-я очередь 10-й корпус квартира №235</div>
+      <div id="doc_id">Договор №12222/9-20-83Д/ИА</div>
+      <div id="dog_block" class="grid">
+        
+        
+        <div class="grid-item" data-dog="2-1">
+          <div class="gi_head">
+            <div class="bl_title">Информация по корпусу</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_con_title">Готовность корпуса</div>
+            <div align="center" id="gi_ready"> <a href="http://sevdol.ru/gallery/building-progress/10-ochered/korpus-17/" target="_blank" class="korp_progress">
+              <div id="korp_progress">Ваш корпус готов на <span id="red_get">21%</span><br>
+                Перейти на ход строительства</div>
+              </a>
+              <div id="readiness">21%</div>
+            </div>
+            <div class="gi_con_title">Срок ввода в эксплуатацию</div>
+            <div class="gi_con_get" id="plandate">II квартал 2017</div>
+            <div class="gi_con_title" id="payform_dog">Форма оплаты</div>
+            <div class="gi_con_get">Ипотека (скидка 3%)</div>
+            <div class="gi_con_title">Банк</div>
+            <div class="gi_con_get" id="ipot_bank">ВТБ24 ПАО</div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="2-2">
+          <div class="gi_head">
+            <div class="bl_title">График платежей</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_doc_imp">
+              <div class="gi_con_title">Сумма договора</div>
+              <div class="doc_money">3 408 725.50 р.</div>
+              <div class="gi_con_title">Осталось оплатить по договору</div>
+              <div class="doc_money">1 408 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 1 от 01.06.2016г.</div>
+              <div class="doc_money">1 408 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 45 от 01.06.2016г.</div>
+              <div class="doc_money">2 408 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="2-3">
+          <div class="gi_head">
+            <div class="bl_title">Состояние документов</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_con_title">Дата подачи документов в Главстрой-СПб для регистрации договора</div>
+            <div class="gi_con_get" id="doc_date_in_frs">07.05.2013</div>
+            <div class="gi_con_title">Дата подачи документов на регистрацию договора в Росреестр</div>
+            <div class="gi_con_get" id="doc_date_out_frs">07.05.2013</div>
+            <div class="gi_doc_imp" id="sf_body">
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="2-4">
+          <div class="gi_head">
+            <div class="bl_title">Информация по передаче квартиры</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_doc_imp">
+              <div class="gi_con_title">Адрес:</div>
+              <div class="gi_con_get_pib" id="miladr">Санкт-Петербург, Юнтоловский проспект, д.47, корпус 4</div>
+              <div class="gi_con_title">Номер квартиры по ПИБ:</div>
+              <div class="gi_con_get_pib doc_money" id="num_app_pib">163</div>
+              <div class="gi_con_title" id="gi_pd_plus">Общая площадь квартиры увеличена на:</div>
+              <div class="gi_con_title" id="gi_pd_minus">Общая площадь квартиры уменьшена на:</div>
+              <div class="gi_con_get_pib doc_money"><span id="pib_diff">0.22</span> м<sup>2</sup></div>
+              <div class="gi_con_title" id="gi_sd_plus">Сумма доплаты:</div>
+              <div class="gi_con_title" id="gi_sd_minus">Сумма возврата:</div>
+              <div class="gi_con_get_pib doc_money" id="summ_diff">8 000.00 р.</div>
+            </div>
+            <div class="gi_c_title">Проектные размеры квартиры</div>
+            <div class="gi_con_title">Общая площадь</div>
+            <div class="gi_con_get"><span id="area_app">22.1</span> м<sup>2</sup></div>
+            <div class="gi_con_title">Балкон/Лоджия</div>
+            <div class="gi_con_get"><span id="area_terr">2.1</span> м<sup>2</sup></div>
+            <div class="gi_c_title">Результат обмера ПИБ квартиры</div>
+            <div class="gi_con_title">Общая площадь</div>
+            <div class="gi_con_get"><span id="area_app_pib">22.1</span> м<sup>2</sup></div>
+            <div class="gi_con_title">Балкон/Лоджия</div>
+            <div class="gi_con_get"><span id="area_terr_pib">2.1</span> м<sup>2</sup></div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+    <div class="item">
+      <div id="subject_dog">Информация для покупателя</div>
+      <div id="doc_id">Текущие брони и сделки</div>
+      <div id="dog_block" class="grid">
+        
+        
+        <div class="grid-item" data-dog="3-1">
+          <div class="gi_head">
+            <div class="bl_title">Ваш персональный менеджер</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gib_manager">
+              <div class="man_photo"><img src="./images/manager.png" class="img-responsive" /></div>
+              <div id="reserv_men_fio">Топчанюк Екатерина Владимировна</div>
+              <div>Раб. тел.:<a href="tel:+7 (812) 6804040" id="reserv_men_wt" class="gi_con_get">+7 (812) 6804040</a></div>
+              <div>Моб. тел.:<a href="tel:+7 (911) 0366332" id="reserv_men_mt" class="gi_con_get">+7 (911) 0366332</span></a></div>
+              <div>E-mail:<a href="mailto:roman.kibirev@glavstroy.ru" id="reserv_men_mail" class="gi_con_get getmail">roman.kibirev@glavstroy.ru</span></a></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="3-2">
+          <div class="gi_head">
+            <div class="bl_title">Ваш менеджер по ипотеке</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gib_manager">
+              <div class="man_photo"><img src="./images/manager.png" class="img-responsive" /></div>
+              <div id="reserv_ip_men_fio">Топчанюк Екатерина Владимировна</div>
+              <div>Раб. тел.:<a href="tel:+7 (812) 6804040" id="reserv_ip_men_wt" class="gi_con_get">+7 (812) 6804040</a></div>
+              <div>Моб. тел.:<a href="tel:+7 (911) 0366332" id="reserv_ip_men_mt" class="gi_con_get">+7 (911) 0366332</span></a></div>
+              <div>E-mail:<a href="mailto:roman.kibirev@glavstroy.ru" id="reserv_ip_men_mail" class="gi_con_get getmail">roman.kibirev@glavstroy.ru</span></a></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="3-3">
+          <div class="gi_head">
+            <div class="bl_title">Текущие брони</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_con_title">Ваша забронированная квартира</div>
+            <div class="gi_con_get" id="reserv_id">Северная Долина 9 СД 9 оч 3-19 корп №158</div>
+            <div class="gi_doc_imp">
+              <div class="gi_con_title">Бронь будет снята утром</div>
+              <div class="gi_con_get" id="reserv_end_date">26.05.2016</div>
+            </div>
+            <div class="gi_con_title">Ваша забронированная квартира</div>
+            <div class="gi_con_get" id="reserv_id">Северная Долина 9 СД 9 оч 3-19 корп №158</div>
+            <div class="gi_doc_imp">
+              <div class="gi_con_title">Бронь будет снята утром</div>
+              <div class="gi_con_get" id="reserv_end_date">26.05.2016</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="3-4">
+          <div class="gi_head">
+            <div class="bl_title">Текущие сделки</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_con_title">Дата Вашей сделки</div>
+            <div class="gi_doc_imp">
+              <div class="gi_con_get" id="deal_date">26.05.2016</div>
+              <div class="gi_con_get" id="deal_date_time">11:30</div>
+            </div>
+            <div class="gi_con_title">Дата Вашей встречи</div>
+            <div class="gi_doc_imp">
+              <div class="gi_con_get" id="meet_date">26.05.2016</div>
+              <div class="gi_con_get" id="meet_date_time">11:30</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="3-4">
+          <div class="gi_head">
+            <div class="bl_title">Список необходимых документов</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_doc_imp" id="sf_body">
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+    <div class="item">
+      <div id="subject_dog">Аренда машиноместа</div>
+      <div id="doc_id">Машиноместо №271</div>
+      <div id="dog_block" class="grid">
+        
+        
+        <div class="grid-item" data-dog="4-1">
+          <div class="gi_head">
+            <div class="bl_title">График платежей</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body" id="park_rent">
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">1</span> от <span id="park_rent_pay_date">24.10.2015</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">2</span> от <span id="park_rent_pay_date">24.11.2015</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">3</span> от <span id="park_rent_pay_date">24.12.2015</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">4</span> от <span id="park_rent_pay_date">24.01.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">5</span> от <span id="park_rent_pay_date">24.02.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">6</span> от <span id="park_rent_pay_date">24.03.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">7</span> от <span id="park_rent_pay_date">24.04.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">9</span> от <span id="park_rent_pay_date">24.05.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">10</span> от <span id="park_rent_pay_date">24.06.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">11</span> от <span id="park_rent_pay_date">24.07.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">12</span> от <span id="park_rent_pay_date">24.08.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">13</span> от <span id="park_rent_pay_date">24.09.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">14</span> от <span id="park_rent_pay_date">24.10.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">15</span> от <span id="park_rent_pay_date">24.11.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">16</span> от <span id="park_rent_pay_date">24.12.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">17</span> от <span id="park_rent_pay_date">24.01.2017</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">18</span> от <span id="park_rent_pay_date">24.02.2017</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">19</span> от <span id="park_rent_pay_date">24.03.2017</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № <span id="park_rent_pay_num">20</span> от <span id="park_rent_pay_date">24.04.2017</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <div class="gi_doc_imp" id="show_payinf">Показать все</div>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-dog="4-2">
+          <div class="gi_head">
+            <div class="bl_title">Фактические оплаты</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body" id="park_rent_fakt">
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж от <span id="park_rent_pay_date_fakt">24.10.2015</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж от <span id="park_rent_pay_date_fakt">24.11.2015</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 3</span> от <span id="park_rent_pay_date_fakt">24.12.2015</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 4</span> от <span id="park_rent_pay_date_fakt">24.01.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 5</span> от <span id="park_rent_pay_date_fakt">24.02.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 6</span> от <span id="park_rent_pay_date_fakt">24.03.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 7</span> от <span id="park_rent_pay_date_fakt">24.04.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 9</span> от <span id="park_rent_pay_date_fakt">24.05.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 10</span> от <span id="park_rent_pay_date_fakt">24.06.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 11</span> от <span id="park_rent_pay_date_fakt">24.07.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж от <span id="park_rent_pay_date_fakt_fakt">24.08.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 13</span> от <span id="park_rent_pay_date_fakt">24.09.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 14</span> от <span id="park_rent_pay_date_fakt">24.10.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 15</span> от <span id="park_rent_pay_date_fakt">24.11.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 16</span> от <span id="park_rent_pay_date_fakt">24.12.2016</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 17</span> от <span id="park_rent_pay_date_fakt">24.01.2017</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 18</span> от <span id="park_rent_pay_date_fakt">24.02.2017</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 19</span> от <span id="park_rent_pay_date_fakt">24.03.2017</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № 20</span> от <span id="park_rent_pay_date_fakt">24.04.2017</span></div>
+              <div class="doc_money">8 725.50 р.</div>
+            </div>
+            <div class="gi_doc_imp" id="show_payinf">Показать все</div>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    
+    <div class="item">
+      <div id="subject_dog">Машиноместо в собственности</div>
+      <div id="doc_id">Договор № 132/1-14М от 01.01.2014</div>
+      <div id="dog_block" class="grid">
+        
+        
+        <div class="grid-item box" data-dog="5-1">
+          <div class="gi_head">
+            <div class="bl_title">Состояние документов</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+          	<div class="gi_con_title">Дата подачи документов в Главстрой-СПб для регистрации договора</div>
+            <div class="gi_con_get" id="park_buy_date_in">07.05.2013</div>
+            <div class="gi_con_title">Дата подачи документов на регистрацию договора в Росреестр</div>
+            <div class="gi_con_get" id="park_buy_date_in_reg">07.05.2013</div>
+            <div class="gi_con_title">Дата регистрации права собственности</div>
+            <div class="gi_con_get" id="park_buy_date_reg">07.05.2013</div>
+            <div class="gi_doc_imp" id="sf_body">
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+            </div>
+          </div>
+		</div>
+        
+        <div class="grid-item box" data-dog="5-2">
+          <div class="gi_head">
+            <div class="bl_title">Информация по оплатам</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+          	<div class="gi_con_title">Сумма договора</div>
+            <div class="doc_money" id="park_buy_sum">3 408 725.50 р.</div>
+            <div class="gi_con_title">Текущая задолженность</div>
+            <div class="doc_money" id="park_buy_sum_ost">3 408 725.50 р.</div>
+          </div>
+		</div>
+        
+      </div>
+	</div>
+    
+    
+  </div>
+</div>
+</body>
+</html>

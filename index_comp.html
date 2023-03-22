@@ -1,0 +1,494 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LK_new</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/jq_mob.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/grid_v1.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</head>
+
+<body>
+
+<!-- head site -->
+<div id="head">
+  <div id="mainlogo"><a href="/"><img src="images/mainlogo.png" /></a></div>
+  <div id="mainlogo_s"><a href="/"><img src="images/mainlogo_s.png" /></a></div>
+  <div id="head_nav">
+    <div id="site_title">Личный кабинет ООО «Главстрой-СПб»</div>
+    <div id="site_navigation">
+      <div id="hn_numb">У Вас <span id="hn_n_dog"></span> договоров</div>
+      <div id="hn_prev"></div>
+      <div class="hn_name_dog"></div>
+      <div class="hnn_list">
+        <div class="hnnl_close"></div>
+        <div id="hnn_list"></div>
+      </div>
+      <div id="hn_next"></div>
+    </div>
+  </div>
+  <div id="head_tools">
+    <a href="#favpage"><div id="main_fav" class="allfav_dis"></div></a>
+    <a href="#exit"><div id="main_exit"></div></a></div>
+</div>
+<!-- end head site -->
+
+<!-- invoice for payment -->
+<div id="inovpay_form" class="modal fade" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Счет на оплату</h4>
+        <div class="md_tools">
+          <div id="md_print"></div>
+          <div id="md_save"></div>
+          <div class="close" data-dismiss="modal" aria-label="Close"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="gi_con_title">Получатель</div>
+        <div class="gi_con_get" id="bill_corp">ООО «Главстрой-СПб»</div>
+        <div class="gi_con_title">Банк получателя</div>
+        <div class="gi_con_get" id="bill_bank">Северо-Западный банк «ПАО Сбербанк»</div>
+        <div id="mb_block">
+          <div class="gi_con_title">ИНН</div>
+          <div class="gi_con_get" id="bill_inn">7839347260</div>
+          <div class="gi_con_title">КПП</div>
+          <div class="gi_con_get" id="bill_kpp">783450001</div>
+          <div class="gi_con_title">ОГРН</div>
+          <div class="gi_con_get" id="bill_ogrn">1069847534360</div>
+        </div>
+        <div id="mb_block">
+          <div class="gi_con_title">БИК</div>
+          <div class="gi_con_get" id="bill_bik">044030653</div>
+          <div class="gi_con_title">Кор. счет</div>
+          <div class="gi_con_get" id="bill_korsh">30101810500000000653</div>
+          <div class="gi_con_title">Расчетный счет</div>
+          <div class="gi_con_get" id="bill_rassh" >40702810655200001599</div>
+        </div>
+        <div class="gi_con_title">Назначение платежа</div>
+        <div class="gi_con_get"><span id="pay_dog"></span> - <span id="pay_area"></span></div>
+        <div class="gi_con_title">Сумма платежа</div>
+        <div class="gi_con_get doc_money" id="pay_summ"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end invoice for payment -->
+
+<!-- pay list -->
+<div id="show_pay_el" class="modal fade" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <div class="md_tools">
+          <div id="md_print"></div>
+          <div id="md_save"></div>
+          <div class="close" data-dismiss="modal" aria-label="Close"></div>
+        </div>
+      </div>
+      <div class="modal-body" id="spe_body"></div>
+    </div>
+  </div>
+</div>
+<!-- end pay list -->
+
+<!-- content -->
+<div id="body_site" class="carousel slide" data-ride="carousel" data-interval="false">
+  <div class="carousel-inner" role="listbox">
+  
+  	<!-- dog# N -->
+    <div class="item active">
+      <div id="subject_dog">{{$doc->subject_dog}}</div>
+      <div id="doc_id">Договор № {{$doc->num_dog}}</div>
+      <div id="dog_block" class="grid">
+      
+      
+        <div class="grid-item" data-dog="1-1"><!-- id block for favorit (script.js 111) -->
+          <div class="gi_head">
+            <div class="bl_title">Информация по корпусу</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_con_title">Готовность корпуса</div>
+            <div align="center" id="gi_ready"> <a href="http://sevdol.ru/gallery/building-progress/10-ochered/korpus-17/" target="_blank" class="korp_progress">
+              <div id="korp_progress">Ваш корпус готов на <span id="red_get">{{$doc->readiness}}</span><br>
+                Перейти на ход строительства</div>
+              </a>
+              <div id="readiness">{{$doc->readiness}}</div>
+            </div>
+            <div class="gi_con_title">Срок ввода в эксплуатацию</div>
+            <div class="gi_con_get" id="plandate">{{strval($doc->plandate)}}</div>
+            <div class="gi_con_title" id="payform_dog">Форма оплаты</div>
+            <div class="gi_con_get">{{$doc->payform_dog}}</div>
+            @if (isset ($doc->ipot_bank) and !empty ($doc->ipot_bank))
+            <div class="gi_con_title">Банк</div>
+            <div class="gi_con_get" id="ipot_bank">{{$doc->ipot_bank}}</div>
+            @endif
+          </div>
+        </div>
+        
+        
+        <div class="grid-item" data-dog="1-2">
+          <div class="gi_head">
+            <div class="bl_title">График платежей</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_doc_imp">
+              <div class="gi_con_title">Сумма договора</div>
+              <div class="doc_money">{{$doc->sum_dog}}</div>
+              <div class="gi_con_title">Осталось оплатить по договору</div>
+              <div class="doc_money">{{$doc->ost_sum_dog}}</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № {{$pay->planpay_num}} от {{$pay->planpay_date}}</div>
+              <div class="doc_money">{{$pay->planpay_sum}}</div>
+            </div>
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № {{$pay->planpay_num}} от {{$pay->planpay_date}}</div>
+              <div class="doc_money">{{$pay->planpay_sum}}</div>
+               @if ($counter == count ($doc->planpays->planpay) and count ($doc->planpays->planpay) > 1)
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+              @endif
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="grid-item" data-dog="1-3">
+          <div class="gi_head">
+            <div class="bl_title">Состояние документов</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+          	@if ($doc->doc_date_in_frs != 0)
+            <div class="gi_con_title">Дата подачи документов в Главстрой-СПб для регистрации договора</div>
+            <div class="gi_con_get" id="doc_date_in_frs">{{$doc->doc_date_in_frs}}</div>
+            @endif
+            @if ($doc->doc_date_out_frs != 0)
+            <div class="gi_con_title">Дата подачи документов на регистрацию договора в Росреестр</div>
+            <div class="gi_con_get" id="doc_date_out_frs">{{$doc->doc_date_out_frs}}</div>
+            @endif
+            @if ($doc->doc_date_reg_comp != 0)
+            <div class="gi_con_title">Дата получения документов с регистрации</div>
+            <div class="gi_con_get" id="doc_date_reg_comp">{{$doc->doc_date_reg_comp}}</div>
+            @endif
+            @if ($doc->doc_date_reg != 0)
+            <div class="gi_con_title">Дата регистрации</div>
+            <div class="gi_con_get" id="doc_date_reg">{{$doc->doc_date_reg}}</div>
+             @endif            
+            <div class="gi_doc_imp" id="sf_body">
+              <div class="savefile"> <a href="/upload/pam_100_ras.pdf" target="_blank">Единовременная оплата или рассрочка. Квартира в строящемся доме</a> </div>
+              <div class="savefile"> <a href="/upload/voen.pdf" target="_blank">Военная ипотека. Квартира в строящемся доме</a> </div>
+              <div class="savefile"> <a href="/upload/ipot.pdf" target="_blank">Ипотека. Квартира в строящемся доме</a> </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="grid-item" data-dog="1-4">
+          <div class="gi_head">
+            <div class="bl_title">Информация по передаче квартиры</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_doc_imp">
+              <div class="gi_con_title">Адрес:</div>
+              @if (!empty ($doc->miladr))
+              <div class="gi_con_get_pib" id="miladr">{{$doc->miladr}}</div>
+              @endif
+              @if (!empty ($doc->num_app_pib))
+              <div class="gi_con_title">Номер квартиры по ПИБ:</div>
+              <div class="gi_con_get_pib doc_money" id="num_app_pib">{{$doc->num_app_pib}}</div>
+              @endif
+              @if (!empty ($doc->pib_diff))
+              <div class="gi_con_title" id="gi_pd_plus">Общая площадь квартиры увеличена на:</div>
+              <div class="gi_con_title" id="gi_pd_minus">Общая площадь квартиры уменьшена на:</div>
+              <div class="gi_con_get_pib doc_money"><span id="pib_diff">{{doubleval($doc->pib_diff)}}</span> м<sup>2</sup></div>
+              <div class="gi_con_title" id="gi_sd_plus">Сумма доплаты:</div>
+              <div class="gi_con_title" id="gi_sd_minus">Сумма возврата:</div>
+              <div class="gi_con_get_pib doc_money" id="summ_diff">{{$doc->summ_diff}}</div>
+               @endif
+            </div>
+            @if (!empty ($doc->area_app))
+            <div class="gi_c_title">Проектные размеры квартиры</div>
+            <div class="gi_con_title">Общая площадь</div>
+            <div class="gi_con_get">{{$doc->area_app}} м<sup>2</sup></div>
+            <div class="gi_con_title">Балкон/Лоджия</div>
+            <div class="gi_con_get">{{$doc->area_terr}} м<sup>2</sup></div>
+            @endif
+            @if (!empty ($doc->area_app_pib))
+            <div class="gi_c_title">Результат обмера ПИБ квартиры</div>
+            <div class="gi_con_title">Общая площадь</div>
+            <div class="gi_con_get">{{$doc->area_app_pib}} м<sup>2</sup></div>
+            <div class="gi_con_title">Балкон/Лоджия</div>
+            <div class="gi_con_get">{{$doc->area_terr_pib}} м<sup>2</sup></div>
+            @endif
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+    <!-- end dog# N -->
+    
+    <!-- Information for buyers -->
+    <div class="item">
+      <div id="subject_dog">Информация для покупателя</div>
+      <div id="doc_id">Текущие брони и сделки</div>
+      <div id="dog_block" class="grid">
+      
+     	@if (!empty ($doc->reserv_men_fio))
+        <div class="grid-item" data-dog="3-1">
+          <div class="gi_head">
+            <div class="bl_title">Ваш персональный менеджер</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gib_manager">
+              <div class="man_photo"><img src="./images/manager.png" class="img-responsive" /></div>
+              <div id="reserv_men_fio">{{$doc->reserv_men_fio}}</div>
+              @if (!empty ($doc->reserv_men_wt))
+              <div>Раб. тел.:<a href="tel:{{$doc->reserv_men_wt}}" id="reserv_men_wt" class="gi_con_get">{{$doc->reserv_men_wt}}</a></div>
+              @endif
+              @if (!empty($doc->reserv_men_mt))
+              <div>Моб. тел.:<a href="tel:{{$doc->reserv_men_mt}}" id="reserv_men_mt" class="gi_con_get">{{$doc->reserv_men_mt}}</span></a></div>
+              @endif
+              @if (!empty($doc->reserv_men_mail))
+              <div>E-mail:<a href="mailto:{{$doc->reserv_men_mail}}" id="reserv_men_mail" class="gi_con_get getmail">{{$doc->reserv_men_mail}}</span></a></div>
+              @endif
+            </div>
+          </div>
+        </div>
+        @endif
+        
+        
+        @if (!empty ($doc->reserv_ip_men_fio))
+        <div class="grid-item" data-dog="3-2">
+          <div class="gi_head">
+            <div class="bl_title">Ваш менеджер по ипотеке</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gib_manager">
+              <div class="man_photo"><img src="./images/manager.png" class="img-responsive" /></div>
+              <div id="reserv_ip_men_fio">{{$doc->reserv_ip_men_fio}}</div>
+              @if (!empty ($doc->reserv_ip_men_wt))
+              <div>Раб. тел.:<a href="tel:{{$doc->reserv_ip_men_wt}}" id="reserv_ip_men_wt" class="gi_con_get">{{$doc->reserv_ip_men_wt}}</a></div>
+              @endif
+              @if (!empty ($doc->reserv_ip_men_mail))
+              <div>E-mail:<a href="mailto:{{$doc->reserv_ip_men_mail}}" id="reserv_ip_men_mail" class="gi_con_get getmail">{{$doc->reserv_ip_men_mail}}</span></a></div>
+              @endif
+            </div>
+          </div>
+        </div>
+        @endif
+        
+        @if (isset ($doc->reservs->reserv))
+        <div class="grid-item" data-dog="3-3">
+          <div class="gi_head">
+            <div class="bl_title">Текущие брони</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+          	@foreach($doc->reservs->reserv as $reserve)
+            <div class="gi_con_title">Ваша забронированная квартира</div>
+            <div class="gi_con_get" id="reserv_id">{{$reserve->reserv_id}}</div>
+            <div class="gi_doc_imp">
+              <div class="gi_con_title">Бронь будет снята утром</div>
+              <div class="gi_con_get" id="reserv_end_date">{{$reserve->reserv_end_date}}</div>
+            </div>
+            @endforeach
+          </div>
+        </div>
+        @endif
+        
+        
+        <div class="grid-item" data-dog="3-4">
+          <div class="gi_head">
+            <div class="bl_title">Текущие сделки</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+          
+          	@foreach($doc->deals as $deal)
+            <div class="gi_con_title">Дата Вашей сделки</div>
+            <div class="gi_doc_imp">
+              <div class="gi_con_get" id="deal_date">{{$deal->deal_date}}</div>
+              <div class="gi_con_get" id="deal_date_time">{{$deal->deal_date_time}}</div>
+            </div>
+            @endforeach
+            
+            @foreach($doc->meets as $meet)
+            <div class="gi_con_title">Дата Вашей встречи</div>
+            <div class="gi_doc_imp">
+              <div class="gi_con_get" id="meet_date">{{$meet->meet_date}}</div>
+              <div class="gi_con_get" id="meet_date_time">{{$meet->meet_date_time}}</div>
+            </div>
+            @endforeach
+            
+          </div>
+        </div>
+        
+        
+        <div class="grid-item" data-dog="3-4">
+          <div class="gi_head">
+            <div class="bl_title">Список необходимых документов</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            <div class="gi_doc_imp" id="sf_body">
+              <div class="savefile"> <a href="/upload/pam_100_ras.pdf" target="_blank">Единовременная оплата или рассрочка. Квартира в строящемся доме</a> </div>
+              <div class="savefile"> <a href="/upload/voen.pdf" target="_blank">Военная ипотека. Квартира в строящемся доме</a> </div>
+              <div class="savefile"> <a href="/upload/ipot.pdf" target="_blank">Ипотека. Квартира в строящемся доме</a> </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+    <!-- end Information for buyers -->
+    
+    <!-- Rental parking spaces -->
+    <div class="item">
+      <div id="subject_dog">Аренда машиноместа</div>
+      <div id="doc_id">{{$doc->park_rent_num}}</div>
+      <div id="dog_block" class="grid">
+      
+        <div class="grid-item" data-dog="4-1">
+          <div class="gi_head">
+            <div class="bl_title">График платежей</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body" id="park_rent">
+          	<?php $key = 0; ?>
+            @foreach($doc->plan_park_rent_pays->plan_park_rent_pay as $pay)
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж № {{$pay->park_rent_pay_num}} от {{$pay->park_rent_pay_date}}</div>
+              <div class="doc_money">{{$pay->park_rent_pay_sum}}</div>
+              <div class="gipi_but">
+                <div id="in_pay">Оплатить</div>
+              </div>
+            </div>
+            <?php $key++; ?>
+            @endforeach
+            <div class="gi_doc_imp" id="show_payinf">Показать все</div>
+          </div>
+        </div>
+        
+        
+        <div class="grid-item" data-dog="4-2">
+          <div class="gi_head">
+            <div class="bl_title">Фактические оплаты</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body" id="park_rent_fakt">
+         	<?php $key = 0; ?>
+            @foreach($doc->fakt_park_rent_pays->fakt_park_rent_pay as $pay)
+            <div id="gi_payinf">
+              <div class="gi_con_title">Платеж от {{$pay->park_rent_pay_date_fakt}}</div>
+              <div class="doc_money">{{$pay->park_rent_pay_sum_fakt}}</div>
+            </div>
+            <?php $key++; ?>
+            @endforeach
+            <div class="gi_doc_imp" id="show_payinf">Показать все</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end Rental parking spaces -->
+    
+    <!-- owned parking spaces -->
+    <div class="item">
+      <div id="subject_dog">Машиноместо в собственности</div>
+      <div id="doc_id">{{$doc->park_buy_num}}</div>
+      <div id="dog_block" class="grid">
+      
+        <div class="grid-item" data-dog="5-1">
+          <div class="gi_head">
+            <div class="bl_title">Состояние документов</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+          	@if ($doc->park_buy_date_in != 0)
+            <div class="gi_con_title">Дата подачи документов в Главстрой-СПб для регистрации договора</div>
+            <div class="gi_con_get" id="park_buy_date_in">{{$doc->park_buy_date_in}}</div>
+            @endif
+            @if ($doc->park_buy_date_in_reg != 0)
+            <div class="gi_con_title">Дата подачи документов на регистрацию договора в Росреестр</div>
+            <div class="gi_con_get" id="park_buy_date_in_reg">{{$doc->park_buy_date_in_reg}}</div>
+            @endif
+            @if ($doc->park_buy_date_reg != 0)
+            <div class="gi_con_title">Дата регистрации права собственности</div>
+            <div class="gi_con_get" id="park_buy_date_reg">{{$doc->park_buy_date_reg}}</div>
+            @endif
+            <div class="gi_doc_imp" id="sf_body">
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+              <div class="savefile"> <a href="#" target="_blank">Памятка для дольщиков, для регистрации права собственности</a> </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="grid-item" data-dog="5-2">
+          <div class="gi_head">
+            <div class="bl_title">Информация по оплатам</div>
+            <div class="bl_tools">
+              <div id="bl_fav" class="fav_disactive"></div>
+            </div>
+          </div>
+          <div class="gi_body">
+            @if ($doc->park_buy_sum != 0)
+            <div class="gi_con_title">Сумма договора</div>
+            <div class="doc_money" id="park_buy_sum">{{$doc->park_buy_sum}}</div>
+            @endif
+            @if ($doc->park_buy_sum_ost != 0)
+            <div class="gi_con_title">Текущая задолженность</div>
+            <div class="doc_money" id="park_buy_sum_ost">{{$doc->park_buy_sum_ost}}</div>
+            @endif
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end owned parking spaces -->
+    
+  </div>
+</div>
+</body>
+</html>
